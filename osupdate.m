@@ -17,6 +17,8 @@ int main(int argc, char *argv[]) {
   
   NSLog(@"Requesting update");
   
+  // 1.1+
+  // in 1.0 this is on BRSettingsHelper, same method, but 1.0 doesn't have AppleTV.framework
   BOOL result = [[ATVSettingsHelper sharedInstance] performOSUpdate:YES EFIUpdate:NO IRUpdate:NO SIUpdate:NO];
   
   NSLog(@"Update requested: %d", result);
