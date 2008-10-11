@@ -1,0 +1,88 @@
+Format: complete
+Title: osupdate README
+Date: 2008-10-11
+XHTML Header: <style>body{font-family: 'Lucida Grande', 'Verdana', Arial, Helvetica, sans-serif;}</style>
+
+# osupdate README
+Version 1.0 
+October 11, 2008
+
+Copyright (c) 2008 Eric Steil III
+
+## Description
+
+osupdate is a simple tool that kicks off the Apple TV upgrade process without
+a download or signature verification.
+
+You can upgrade or downgrade at will with this tool.
+
+This tool still requires that you have shell access to the Apple TV to use.
+
+The recovery partition is not modified at all.  The process used is the **same**
+process used during normal Apple TV updates.
+
+Updates for the firmware are requested as well, and will not affect anything
+if those updates are not present.  This part is untested, however.
+
+## Usage
+
+To begin, place the OS or any other updates into `/Users/frontrow/Updates` on
+the Apple TV.  For the most part, the file names do not matter except for the
+extension.
+
+Note: The updates directory is removed on every boot, so don't keep your only
+copy of any files there!
+
+Next, copy the `osupdate` binary to the Apple TV.  Make sure it is executable
+(`chmod +x osupdate` if necessary) and then execute it as root:
+
+`sudo ./osupdate`
+
+It will print a few lines of text, and your Apple TV should automatically
+reboot.  If it says `Requested update: 0`, then there were no updates found.
+Check the file names if this happens.
+
+## Notes
+
+The OS update must have the extension `.dmg`, in lowercase.
+
+The firmware updates are all two files, an updater and the firmware itself.
+The updater must be named exactly as specified, and the extension of the
+firmware must match.
+
+The IR updater is `IRReceiverUpdaterTool2`, and an `.irrxfw` file.
+
+The EFI updater is `AppleCapsule.efi`, and a `.scap` file.
+
+The HDMI updater is `hdmiutil`, and a `.sihex` file.
+
+## Building
+
+This should build with any reasonably modern version of Xcode with the 10.4
+SDK installed.  There are no special requirements, just run `make`.
+
+## License
+
+Copyright (C) 2008 Eric Steil III.
+
+osupdate is licensed under GPL 3.  The full license can be found in LICENSE.txt.
+ 
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+## Notice
+
+This program is provided at your own risk.  The author claims no responsibility
+for any damage or other outcome that may occur from use of this software.
+
+The author is not affiliated with Apple, Inc.
